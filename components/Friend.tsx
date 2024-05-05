@@ -14,7 +14,7 @@ const Friend = ({ user }: { user: any }) => {
   const isMessageOpened = lastMessage?.opened
 
   let messageStatus: string = ''
-  let icon: JSX.Element
+  let icon: JSX.Element = <IoSend/>
 
   if (amISender) {
     messageStatus = isMessageOpened ? 'Opened' : 'Sent'
