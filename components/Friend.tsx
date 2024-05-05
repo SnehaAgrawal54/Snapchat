@@ -4,7 +4,7 @@ import { Avatar, AvatarImage } from './ui/avatar'
 import { formatDate } from '@/lib/utils'
 import { IoSend, IoSendOutline } from 'react-icons/io5'
 import { RiCheckboxBlankCircleFill, RiCheckboxBlankFill } from 'react-icons/ri'
-import { MdCheckCircleOutline } from 'react-icons/md'
+import { MdCheckBoxOutlineBlank, MdCheckCircleOutline } from 'react-icons/md'
 
 const Friend = ({ user }: { user: any }) => {
   const lastMessage = user.lastMessage
@@ -14,7 +14,7 @@ const Friend = ({ user }: { user: any }) => {
   const isMessageOpened = lastMessage?.opened
 
   let messageStatus: string = ''
-  let icon: JSX.Element = <IoSend/>
+  let icon: JSX.Element = <IoSend />
 
   if (amISender) {
     messageStatus = isMessageOpened ? 'Opened' : 'Sent'
@@ -28,7 +28,18 @@ const Friend = ({ user }: { user: any }) => {
     if (!lastMessage) {
       icon = <RiCheckboxBlankFill />
       messageStatus = 'New Snap'
-    }
+    } else {
+      messageStatus = isMessageOpened ? "Received" : "Show Message";
+      icon = lastMessageType === "text"
+        ?
+        (
+          !isMessageOpened ? <RiCheckboxBlankFill /> : <MdCheckBoxOutlineBlank />
+        )
+        :
+        (
+          !isMessageOpened ? <RiCheckboxBlankFill /> : <MdCheckBoxOutlineBlank />
+        )
+    };
   }
 
   return (
