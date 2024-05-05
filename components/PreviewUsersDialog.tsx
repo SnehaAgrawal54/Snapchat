@@ -15,8 +15,8 @@ import { sendSnapMessage } from "@/lib/serveractions"
 import { useRouter } from "next/navigation"
 
 export function PreviewUsersDialog(
-  { selectedFile, close }:
-    { selectedFile: string, close: () => void }
+  { selectedFile, close, onPreview }:
+    { selectedFile: string, close: () => void, onPreview: () => void }
 ) {
 
   const [users, setUsers] = useState([])
